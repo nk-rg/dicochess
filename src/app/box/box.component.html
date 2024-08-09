@@ -1,0 +1,36 @@
+@if (image() != null) {
+    <div
+        class="inline-block piece relative"
+       
+        [appDraggable]="index()"
+        [appDroppable]="true"
+        [canDrop]="canDrop"
+        (itemDropped)="handleDropped($event)"
+        (mousedown)="choosePiece()"
+    >
+    <!-- [class.bg-yellow-500]="this.selectedPiece()" -->
+        <!-- <span class="absolute">{{ index() }}</span> -->
+        <img [src]="image()" />
+    </div>
+} @else if (showHints()) {
+    <div
+        class="flex w-full h-full justify-center items-center relative"
+        (click)="movePiece()"
+        [appDroppable]="true"
+        [canDrop]="canDrop"
+        (itemDropped)="handleDropped($event)"
+    >
+        <div class="bg-stone-400 bg-opacity-40 rounded-full h-1/2 w-1/2 absolute"></div>
+        <!-- <span class="absolute">{{ index() }}</span> -->
+    </div>
+} @else {
+    <div
+        [appDroppable]="true"
+        [canDrop]="canDrop"
+        (itemDropped)="handleDropped($event)"
+        class="inline-block w-full h-full relative"
+        (click)="this.board().deselectPiece()"
+    >
+        <!-- <span class="absolute">{{ index() }}</span> -->
+    </div>
+}

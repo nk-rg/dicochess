@@ -1,0 +1,15 @@
+.piece {
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+.piece.dragging {
+    opacity: 0;
+}
+
+.piece img {
+    max-width: 100%;
+    max-height: 100%;
+}
